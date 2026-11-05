@@ -12,9 +12,9 @@ Manage your [Incus](https://github.com/lxc/incus) deployment from the web.
 <p align="center">Incus UI Application Shell</p>
 
 ## Roadmap
-Incus UI is currently in its infancy and **its foundation is still under construction** 🏗️. The first release (v0.1) is scheduled for 11/12/2026, which will cement this foundation. From there, robust primitive implementation will begin.
+Incus UI is currently in its infancy and **its foundation is still under construction** 🏗️. The first release (v0.1) is scheduled for November 12th, which will cement this foundation. From there, robust primitive implementation will begin.
 
-We follow a bi-weekly release cycle, shipping a release alongside each monthly Incus feature update, and an additional release in-between.
+We follow a semi-monthly release cycle, shipping a release alongside each monthly Incus feature update, and an additional release in-between.
 
 For a holistic detailed roadmap for each planned version, see our [GitHub Milestones](https://github.com/lxc/incus-ui/milestones).
 
