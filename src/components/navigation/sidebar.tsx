@@ -17,6 +17,7 @@ import {
 import { Link, useMatchRoute } from "@tanstack/react-router";
 import { useLayoutEffect, useRef, useState } from "react";
 import logo from "@/assets/logo.svg";
+import { UserMenu } from "@/components/auth/user-menu";
 import {
 	Sidebar,
 	SidebarContent,
@@ -450,6 +451,9 @@ export function UiSidebar() {
 			<SidebarFooter className="p-0">
 				<SidebarGroup>
 					<SidebarNavigation items={navItems.secondary} allowSubItems={false} />
+					<SidebarMenu className="mt-1">
+						<UserMenu />
+					</SidebarMenu>
 				</SidebarGroup>
 			</SidebarFooter>
 		</Sidebar>
