@@ -5,6 +5,7 @@
     "jsx": "react-jsx",
     "module": "ESNext",
     "paths": {
+      "#collection-debug": ["./src/hooks/incus/collection-watch-debug-stub.ts"],
       "@/*": ["./src/*"],
     },
     "lib": ["ES2022", "DOM", "DOM.Iterable"],

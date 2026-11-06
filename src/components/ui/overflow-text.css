@@ -1,0 +1,74 @@
+/* SPDX-FileCopyrightText: © 2026 Joseph Maldjian <joseph.maldjian@hyecompany.com>
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+.overflow-text {
+	display: block;
+	position: relative;
+	min-width: 0;
+	max-width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.overflow-text-measure {
+	display: block;
+	visibility: hidden;
+	width: max-content;
+	pointer-events: none;
+}
+.overflow-text-rest {
+	display: block;
+	position: absolute;
+	inset: 0;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.overflow-text-track {
+	display: flex;
+	position: absolute;
+	inset-block-start: 0;
+	inset-inline-start: 0;
+	width: max-content;
+	gap: 24px;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+@keyframes overflow-text-scroll {
+	from {
+		transform: translateX(var(--overflow-start));
+	}
+	to {
+		transform: translateX(calc(var(--overflow-start) - 50% - 12px));
+	}
+}
+@media (prefers-reduced-motion: no-preference) {
+	.overflow-text-rest,
+	.overflow-text-track {
+		transition: opacity 200ms ease;
+	}
+	.group\/overflow:hover .overflow-text[data-overflow] .overflow-text-rest,
+	.group\/overflow[data-highlighted]
+		.overflow-text[data-overflow]
+		.overflow-text-rest,
+	.group\/overflow:focus-visible
+		.overflow-text[data-overflow]
+		.overflow-text-rest,
+	.overflow-text[data-overflow]:hover .overflow-text-rest {
+		opacity: 0;
+	}
+	.group\/overflow:hover .overflow-text[data-overflow] .overflow-text-track,
+	.group\/overflow[data-highlighted]
+		.overflow-text[data-overflow]
+		.overflow-text-track,
+	.group\/overflow:focus-visible
+		.overflow-text[data-overflow]
+		.overflow-text-track,
+	.overflow-text[data-overflow]:hover .overflow-text-track {
+		visibility: visible;
+		opacity: 1;
+		animation: overflow-text-scroll var(--overflow-duration) linear 200ms
+			infinite backwards;
+	}
+}
