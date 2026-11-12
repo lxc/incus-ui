@@ -9,6 +9,9 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { EventsDevtoolsPanel } from "@/components/debug/events-devtools-panel";
+import { IncusSessionProvider } from "@/components/providers/session-provider";
+import { Toaster, ToastProvider } from "@/components/ui/toast";
 
 import "../styles.css";
 
@@ -27,18 +30,29 @@ function RootDocument() {
 	return (
 		<>
 			<HeadContent />
-			<Outlet />
-			<TanStackDevtools
-				config={{
-					position: "bottom-right",
-				}}
-				plugins={[
-					{
-						name: "Tanstack Router",
-						render: <TanStackRouterDevtoolsPanel />,
-					},
-				]}
-			/>
+			<ToastProvider>
+				<IncusSessionProvider>
+					<Outlet />
+				</IncusSessionProvider>
+				<Toaster />
+			</ToastProvider>
+			{import.meta.env.DEV && (
+				<TanStackDevtools
+					config={{
+						position: "bottom-right",
+					}}
+					plugins={[
+						{
+							name: "Tanstack Router",
+							render: <TanStackRouterDevtoolsPanel />,
+						},
+						{
+							name: "Incus Events",
+							render: <EventsDevtoolsPanel />,
+						},
+					]}
+				/>
+			)}
 			<Scripts />
 		</>
 	);
